@@ -1,8 +1,8 @@
 import scrapy
 
 
-class BookspiderSpider(scrapy.Spider):
-    name = "bookspider"
+class BooksSpider(scrapy.Spider):
+    name = "books"
     allowed_domains = ["www.jjwxc.net"]
     start_urls = [
         "https://www.jjwxc.net/bookbase.php?fw0=0&fbsj0=0&novelbefavoritedcount0=0&yc1=1&xx3=3&mainview0=0&sd0=0&lx1=1&bq=&removebq=&isfinish=0&collectiontypes=ors&searchkeywords=&sortType=1&page=1"
@@ -16,7 +16,7 @@ class BookspiderSpider(scrapy.Spider):
             if book.css("td a") is not []:
                 yield {
                     "name": book.css("td a::text")[1].get(),
-                    "author-url": book.css("td a")[1].attrib["href"],
+                    "url": book.css("td a")[1].attrib["href"],
                 }
 
         page_field = "page="
