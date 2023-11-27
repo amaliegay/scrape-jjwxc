@@ -33,9 +33,9 @@ class BooksSpider(scrapy.Spider):
 
 def parse(self, response):
 	description = response.xpath("div[@id='novelintro']/text()").get()
-	name = response.xpath("span[@itemprop='articleSelection']/text()").get()
+	title = response.xpath("span[@itemprop='articleSelection']/text()").get()
 	yield {
         "url = response.url,
-        "name": name,
+        "title": title,
 		"description" : description,
                 }
