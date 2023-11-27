@@ -1,4 +1,5 @@
 import scrapy
+from bookspider.items import BookItem
 
 
 class BooksSpider(scrapy.Spider):
@@ -32,10 +33,8 @@ class BooksSpider(scrapy.Spider):
             yield response.follow(next_page_url, callback=self.parse)
 
 def parse(self, response):
-	description = response.xpath("div[@id='novelintro']/text()").get()
-	title = response.xpath("span[@itemprop='articleSelection']/text()").get()
-	yield {
-        "url = response.url,
-        "title": title,
-		"description" : description,
-                }
+	book_item = BookItem()
+	book_item["url"] = response.url
+	book_item["title"] = response.xpath("span[@itemprop='articleSelection']/text()").get()
+	book_item["description"] = response.xpath("div[@id='novelintro']/text()").get()
+	yield book_item
