@@ -14,9 +14,13 @@ class BooksSpider(scrapy.Spider):
 
         for book in books:
             if book.css("td a") is not []:
-                yield {
+                relative_url = book.css("td a")[1].attrib["href"]
+                url = "https://www.jjwxc.net/" + relative_url
+				yield response.follow(url, callback=self.parse_book_page)
+				yield {
+                    "url = url,
                     "name": book.css("td a::text")[1].get(),
-                    "url": book.css("td a")[1].attrib["href"],
+					"description" : ,
                 }
 
         page_field = "page="
@@ -31,3 +35,6 @@ class BooksSpider(scrapy.Spider):
 
         if next_page_index <= 10:
             yield response.follow(next_page_url, callback=self.parse)
+
+def parse(self, response):
+	description = response.xpath("div[@id='novelintro']/text()").get()
