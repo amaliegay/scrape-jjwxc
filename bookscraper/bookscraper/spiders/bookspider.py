@@ -17,11 +17,6 @@ class BooksSpider(scrapy.Spider):
                 relative_url = book.css("td a")[1].attrib["href"]
                 url = "https://www.jjwxc.net/" + relative_url
 				yield response.follow(url, callback=self.parse_book_page)
-				yield {
-                    "url = url,
-                    "name": book.css("td a::text")[1].get(),
-					"description" : ,
-                }
 
         page_field = "page="
         current_page_index = int(
@@ -38,3 +33,9 @@ class BooksSpider(scrapy.Spider):
 
 def parse(self, response):
 	description = response.xpath("div[@id='novelintro']/text()").get()
+	name = response.xpath("span[@itemprop='articleSelection']/text()").get()
+	yield {
+        "url = response.url,
+        "name": name,
+		"description" : description,
+                }
