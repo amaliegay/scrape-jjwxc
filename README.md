@@ -1,6 +1,6 @@
 # scrape-jjwxc
 
-A Scrapy spider that crawls the Chinese fiction platform jjwxc.net and scrapes the data from the description page of the top 1000 F/F romance novels on the site.
+A Scrapy spider that crawls the Chinese fiction platform 晋江文学城 (jjwxc.net) and scrapes the data from the description page of the top 1000 F/F romance novels on the site.
 
 # Requirements
 
