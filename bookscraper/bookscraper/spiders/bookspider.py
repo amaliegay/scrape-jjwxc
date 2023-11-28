@@ -36,7 +36,8 @@ class BooksSpider(scrapy.Spider):
         book_item = BookItem()
         book_item["url"] = response.url
         book_item["title"] = response.css("span.bigtext h1 span::text").get()
-        book_item["description"] = response.xpath(
+		description = response.xpath(
             "//div[@id='novelintro']/text()"
-        ).getall()
+        ).getall() or response.xpath("//div[@id='novelintro']/font/text()").getall()
+        book_item["description"] = 
         yield book_item
