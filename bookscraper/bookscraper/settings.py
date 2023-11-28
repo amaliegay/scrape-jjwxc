@@ -13,12 +13,12 @@ SPIDER_MODULES = ["bookscraper.spiders"]
 NEWSPIDER_MODULE = "bookscraper.spiders"
 
 FEEDS = {
-  'booksdata.json' : { 'format': 'json' }
+  'booksdata.json' : { 'format': 'json', 'overwrite': True }
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
-
+"https://www.jjwxc.net/bookbase.php?yc=1&xx=3&lx=1&isfinish=0&collectiontypes=&searchkeywords=&sortType=2&page=""https://www.jjwxc.net/bookbase.php?yc=1&xx=3&lx=1&isfinish=0&collectiontypes=&searchkeywords=&sortType=2&page="
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
