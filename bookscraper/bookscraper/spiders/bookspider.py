@@ -6,7 +6,7 @@ class BooksSpider(scrapy.Spider):
     name = "books"
     allowed_domains = ["www.jjwxc.net"]
 
-    url_no_index = "https://www.jjwxc.net/bookbase.php?yc=1&xx=3&lx=1&isfinish=0&collectiontypes=&searchkeywords=&sortType=2&page="
+    url_no_index = "https://www.jjwxc.net/bookbase.php?fw=0&yc=1&xx=3&mainview=0&sd=0&lx=1&bq=-1&sortType=2&isfinish=0&collectiontypes=&searchkeywords=&page="
     start_urls = [url_no_index + "1"]
 
     def parse(self, response):
