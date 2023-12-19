@@ -6,7 +6,7 @@ class BooksSpider(scrapy.Spider):
     name = "books"
     allowed_domains = ["www.jjwxc.net"]
 
-    url_no_index = "https://www.jjwxc.net/bookbase.php?fw=0&yc=1&xx=3&mainview=0&sd=0&lx=1&bq=-1&sortType=2&isfinish=0&collectiontypes=&searchkeywords=&page="
+    url_no_index = "https://www.jjwxc.net/bookbase.php?fw0=0&fbsj0=0&novelbefavoritedcount0=0&yc1=1&xx3=3&mainview0=0&sd0=0&lx0=0&bq=-1&removebq=&isfinish=0&collectiontypes=ors&searchkeywords=&sortType=1&page="
     start_urls = [url_no_index + "1"]
 
     def parse(self, response):
@@ -26,7 +26,7 @@ class BooksSpider(scrapy.Spider):
         next_page_index = current_page_index + 1
         next_page_url = self.url_no_index + str(next_page_index)
 
-        if next_page_index <= 10:
+        if next_page_index <= 100:
             yield response.follow(next_page_url, callback=self.parse)
 
     def parse_book_page(self, response):
